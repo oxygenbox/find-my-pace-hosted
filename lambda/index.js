@@ -10,7 +10,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Well howdy, let me help you find your pace. Which would you like to try?';
+        const speakOutput = 'Well howdy,  How far do you want to run?';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
