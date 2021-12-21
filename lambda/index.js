@@ -19,13 +19,13 @@ const LaunchRequestHandler = {
     }
 };
 
-const GetTimeIntentHandler = {
+const SetTimeIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'GetTimeIntent';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'SetTimeIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'get time Intent called';
+        const speakOutput = 'Set time Intent called';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -160,7 +160,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
         HelloWorldIntentHandler,
-        GetTimeIntentHandler,
+        SetTimeIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,
