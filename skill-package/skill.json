@@ -1,0 +1,35 @@
+{
+  "manifest": {
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": "arn:aws:lambda:us-east-1:398655331227:function:7cb01894-b221-4dd0-9c20-365b96d2350a:Release_0"
+        },
+        "regions": {
+          "EU": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:eu-west-1:398655331227:function:7cb01894-b221-4dd0-9c20-365b96d2350a:Release_0"
+            }
+          },
+          "NA": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:us-east-1:398655331227:function:7cb01894-b221-4dd0-9c20-365b96d2350a:Release_0"
+            }
+          },
+          "FE": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:us-west-2:398655331227:function:7cb01894-b221-4dd0-9c20-365b96d2350a:Release_0"
+            }
+          }
+        }
+      }
+    },
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "name": "Find My Pace"
+        }
+      }
+    }
+  }
+}
