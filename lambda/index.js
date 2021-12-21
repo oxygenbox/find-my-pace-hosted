@@ -71,8 +71,8 @@ const SetDistanceIntentHandler = {
 
 
         return handlerInput.responseBuilder
-            .speak(speakOutput);
-            .reprompt(repromptText);
+            .speak(speakOutput)
+            .reprompt(repromptText)
             .getResponse();
         }
 };
