@@ -49,13 +49,32 @@ const SetDistanceIntentHandler = {
         let unit = handlerInput.requestEnvelope.request.intent.slots.unit.value;
         let resolvedUnit = tools.resolvedValue(handlerInput.requestEnvelope, `unit`)
 
-        const speakOutput = 'Set distance Intent called';
+        let speakOutput = `Set distance Intent called ${distance} ${unit}resolves to ${resolvedUnit}`;
+        let repromptText = speakOutput;
+
+        if(distance){
+            if(decimal){
+                decimal = parseInt(decimal) * 0.1
+                distance += decimal
+            }
+
+            sessionAttributes.distance = distance
+        }
+
+        if(unit){
+            sessionAttributes.unit = unit;
+            sessionAttributes.resolvedUnit = resolvedUnit;
+
+            speakOutput = `In minutes, hours, and seconds; what time are you looking to complete ${distance} ${resolvedUnit}? `;
+            reprompt = speakOutput;
+        }
+
 
         return handlerInput.responseBuilder
-            .speak(speakOutput)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
+            .speak(speakOutput);
+            .reprompt(repromptText);
             .getResponse();
-    }
+        }
 };
 
 
