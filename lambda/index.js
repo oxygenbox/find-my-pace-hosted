@@ -20,17 +20,72 @@ const LaunchRequestHandler = {
     }
 };
 
+/*
+const SetTimeIntentHandler = {
+  
+    handle(handlerInput) {
+    
+        const hours = handlerInput.requestEnvelope.request.intent.slots.hour.value
+        const minutes = handlerInput.requestEnvelope.request.intent.slots.minute.value
+        const seconds = handlerInput.requestEnvelope.request.intent.slots.second.value
+        
+        let h = (hours) ? hours : 0
+        let m = (minutes) ? minutes : 0
+        let s = (seconds) ? seconds : 0
+      
+        let totalSeconds = tools.convertToSeconds(h, m, s)
+        
+        sessionAttributes.totalSeconds = tools.convertToSeconds(h, m, s)
+        
+      
+        
+        let speakOutput = `Time Intent called. `;
+        
+        
+        
+        if(sessionAttributes.distance && sessionAttributes.unit && sessionAttributes.totalSeconds){
+            const split = tools.calculateSplits(sessionAttributes)
+            const formattedTime = tools.formatSecondsToTime(split)
+            speakOutput = ` the split for running ${sessionAttributes.distance} ${sessionAttributes.unit} in ${sessionAttributes.totalSeconds} is ${split} ${formattedTime}`
+            
+            speakOutput = `running ${sessionAttributes.distance} ${sessionAttributes.unit} requires a pace of ${formattedTime} per ${sessionAttributes.unit}`
+      
+            
+        }
+        
+       // 
+        
+        //speakOutput = `${h}: ${m}: ${s}`
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('add a reprompt if you want to keep the session open for the user to respond')
+            .getResponse();
+    }
+};
+*/
+
 const SetTimeIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'SetTimeIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Set time Intent called';
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        let hours = handlerInput.requestEnvelope.request.intent.slots.hour.value;
+        let minutes = handlerInput.requestEnvelope.request.intent.slots.minute.value;
+        let seconds = handlerInput.requestEnvelope.request.intent.slots.second.value; 
+        let h = (hours) ? hours : 0;
+        let m = (minutes) ? minutes : 0;
+        let s = (seconds) ? seconds : 0;
+
+
+        let speakOutput = `Set time Intent called. ${h} hours ${m} minutes ${s} seconds`;
+        let repromptText = repromptText;
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
+            .reprompt(repromptText)
             .getResponse();
     }
 };
@@ -76,49 +131,6 @@ const SetDistanceIntentHandler = {
             .getResponse();
         }
 };
-
-
-/*
-const SetDistanceIntentHandler = {
-    
-    handle(handlerInput) {
-        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-        let dist = handlerInput.requestEnvelope.request.intent.slots.distance.value
-        let decimal = handlerInput.requestEnvelope.request.intent.slots.decimal.value
-        const unit = handlerInput.requestEnvelope.request.intent.slots.unit.value
-        const resolvedUnit = resolvedValue(handlerInput.requestEnvelope, `distance`)
-        
-        let speakOutput = `Distance Intent called ${dist} ${unit}`;
-        let repromptText = speakOutput
-        
-        dist = parseInt(dist);
-        
-        
-        if(dist){
-            if(decimal){
-                decimal = parseInt(decimal) * 0.1
-                dist += decimal
-            }
-            
-            
-            sessionAttributes.distance = dist
-        }
-        
-        if(unit){
-            sessionAttributes.unit = unit
-        }
-        
-        speakOutput = `In minutes, hours, and seconds; what time are you looking to complete ${dist} ${unit}? `
-
-        return handlerInput.responseBuilder
-            .speak(speakOutput)
-            .reprompt(repromptText)
-            .getResponse();
-    }
-};
-
-
-*/
 
 const HelloWorldIntentHandler = {
     canHandle(handlerInput) {
