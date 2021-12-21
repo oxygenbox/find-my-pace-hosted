@@ -4,6 +4,7 @@
  * session persistence, api calls, and more.
  * */
 const Alexa = require('ask-sdk-core');
+const tools = require('./my_modules/tools');
 
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
@@ -42,6 +43,12 @@ const SetDistanceIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'SetDistanceIntent';
     },
     handle(handlerInput) {
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        let distance = handlerInput.requestEnvelope.request.intent.slots.distance.value;
+        let decimal = handlerInput.requestEnvelope.request.intent.slots.decimal.value;
+        let unit = handlerInput.requestEnvelope.request.intent.slots.unit.value;
+        let resolvedUnit = tools.resolvedValue(handlerInput.requestEnvelope, `unit`)
+
         const speakOutput = 'Set distance Intent called';
 
         return handlerInput.responseBuilder
@@ -50,6 +57,49 @@ const SetDistanceIntentHandler = {
             .getResponse();
     }
 };
+
+
+/*
+const SetDistanceIntentHandler = {
+    
+    handle(handlerInput) {
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        let dist = handlerInput.requestEnvelope.request.intent.slots.distance.value
+        let decimal = handlerInput.requestEnvelope.request.intent.slots.decimal.value
+        const unit = handlerInput.requestEnvelope.request.intent.slots.unit.value
+        const resolvedUnit = resolvedValue(handlerInput.requestEnvelope, `distance`)
+        
+        let speakOutput = `Distance Intent called ${dist} ${unit}`;
+        let repromptText = speakOutput
+        
+        dist = parseInt(dist);
+        
+        
+        if(dist){
+            if(decimal){
+                decimal = parseInt(decimal) * 0.1
+                dist += decimal
+            }
+            
+            
+            sessionAttributes.distance = dist
+        }
+        
+        if(unit){
+            sessionAttributes.unit = unit
+        }
+        
+        speakOutput = `In minutes, hours, and seconds; what time are you looking to complete ${dist} ${unit}? `
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt(repromptText)
+            .getResponse();
+    }
+};
+
+
+*/
 
 const HelloWorldIntentHandler = {
     canHandle(handlerInput) {

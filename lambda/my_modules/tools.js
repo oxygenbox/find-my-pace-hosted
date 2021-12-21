@@ -67,7 +67,32 @@ var tools = {
             return `${unit}s `
         }
         return unit
-    }
+    },
+
+    resolvedValue(requestEnvelope, slotName) {
+        if (requestEnvelope &&
+          requestEnvelope.request &&
+          requestEnvelope.request.intent &&
+          requestEnvelope.request.intent.slots &&
+          requestEnvelope.request.intent.slots[slotName] &&
+          requestEnvelope.request.intent.slots[slotName].resolutions &&
+          requestEnvelope.request.intent.slots[slotName].resolutions.resolutionsPerAuthority &&
+          requestEnvelope.request.intent.slots[slotName].resolutions.resolutionsPerAuthority[0] &&
+          requestEnvelope.request.intent.slots[slotName].resolutions.resolutionsPerAuthority[0].values &&
+          requestEnvelope.request.intent.slots[slotName].resolutions.resolutionsPerAuthority[0]
+            .values[0] &&
+          requestEnvelope.request.intent.slots[slotName].resolutions.resolutionsPerAuthority[0].values[0]
+            .value &&
+          requestEnvelope.request.intent.slots[slotName].resolutions.resolutionsPerAuthority[0].values[0]
+            .value.name) {
+          return requestEnvelope.request.intent.slots[slotName].resolutions
+            .resolutionsPerAuthority[0].values[0].value.name;
+        }
+    
+        return requestEnvelope.request.intent.slots[slotName].value
+        //return undefined;
+        
+      }
     
     
     
@@ -77,64 +102,7 @@ module.exports = tools
 
 
 
-/*
-{
-                    "name": "SetDistanceIntent",
-                    "slots": [
-                        {
-                            "name": "distance",
-                            "type": "AMAZON.NUMBER"
-                        },
-                        {
-                            "name": "unit",
-                            "type": "LIST_OF_UNITS"
-                        },
-                        {
-                            "name": "decimal",
-                            "type": "AMAZON.NUMBER"
-                        }
-                    ],
-                    "samples": [
-                        "my race is {distance} point {decimal}",
-                        "i plan to run {distance} point {decimal}",
-                        "a {distance} point {decimal} {unit}",
-                        "my race is a {distance} point {decimal} {unit}",
-                        "I want to run {distance} point {decimal} {unit}",
-                        "i am planning to run a {distance} point {decimal} {unit}",
-                        "I am going to run {distance} point {decimal} {unit}",
-                        "the distance is {distance} point {decimal} {unit}",
-                        "the distance is {distance} {unit}",
-                        "I am going to run {distance} {unit}",
-                        "i am planning to run a {distance} {unit}",
-                        "my race is {distance} {unit}",
-                        "i plan to run {distance} {unit}",
-                        "a {distance} {unit}",
-                        "my race is a {distance} {unit}",
-                        "I want to run {distance} {unit}"
-                    ]
-                }
-            ],
-            "types": [
-                {
-                    "name": "LIST_OF_UNITS",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "kilometers",
-                                "synonyms": [
-                                    "k"
-                                ]
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "miles"
-                            }
-                        }
-                    ]
-                },
 
-*/
 
 /*
 const SetDistanceIntentHandler = {
