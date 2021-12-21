@@ -55,12 +55,7 @@ const SetTimeIntentHandler = {
         
        // 
         
-        //speakOutput = `${h}: ${m}: ${s}`
-
-        return handlerInput.responseBuilder
-            .speak(speakOutput)
-            .reprompt('add a reprompt if you want to keep the session open for the user to respond')
-            .getResponse();
+    
     }
 };
 */
@@ -72,13 +67,12 @@ const SetTimeIntentHandler = {
     },
     handle(handlerInput) {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-        let hours = handlerInput.requestEnvelope.request.intent.slots.hour.value;
+        let hours = handlerInput.requestEnvelope.request.intent.slots.hours.value;
         let minutes = handlerInput.requestEnvelope.request.intent.slots.minutes.value;
        let seconds = handlerInput.requestEnvelope.request.intent.slots.seconds.value; 
-       let h = (hours) ? hours : 0;
-       let m = (minutes) ? minutes : 0;
-      let s = (seconds) ? seconds : 0;
-
+       //let h = (hours) ? hours : 0;
+      // let m = (minutes) ? minutes : 0;
+     // let s = (seconds) ? seconds : 0;
 
         let speakOutput = `Set time Intent called. `;
         let repromptText = speakOutput;
@@ -88,7 +82,7 @@ const SetTimeIntentHandler = {
             .reprompt(repromptText)
             .getResponse();
     }
-};
+};gi
 
 
 
