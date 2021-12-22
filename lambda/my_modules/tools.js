@@ -1,22 +1,22 @@
 var tools = {
     convertToSeconds(hours, minutes, seconds){
-        let tot = 0
+        let total = 0
         
         if(seconds){
-            tot += parseInt(seconds)
+            total += parseInt(seconds)
         }
         
         if(minutes){
-            tot += minutes*60
+            total += parseInt(minutes)*60
         }
         
         if(hours){
-            tot += hours*60*60
+            total += parseInt(hours)*60*60
         }
         
-        //return tot
-        return 1000 + tot;
+        return total;
     },
+    
     calculateSplits(attributes){
         let splitSeconds = attributes.totalSeconds/attributes.distance
         
