@@ -72,7 +72,7 @@ const SetTimeIntentHandler = {
     },
     handle(handlerInput) {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-        //let hours = handlerInput.requestEnvelope.request.intent.slots.hour.value;
+        let hours = handlerInput.requestEnvelope.request.intent.slots.hour.value;
    // let minutes = handlerInput.requestEnvelope.request.intent.slots.minute.value;
        // let seconds = handlerInput.requestEnvelope.request.intent.slots.second.value; 
        // let h = (hours) ? hours : 0;
