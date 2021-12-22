@@ -75,6 +75,9 @@ const SetDistanceIntentHandler = {
         let decimal = handlerInput.requestEnvelope.request.intent.slots.decimal.value;
         let unit = handlerInput.requestEnvelope.request.intent.slots.unit.value;
         let resolvedUnit = tools.resolvedValue(handlerInput.requestEnvelope, `unit`)
+
+        distance = parseFloat(distance);
+        sessionAttributes.distance = distance;
         /*
         
         
