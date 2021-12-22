@@ -15,7 +15,7 @@ var tools = {
         }
         
         //return tot
-        return 1000
+        return 1000 + tot;
     },
     calculateSplits(attributes){
         let splitSeconds = attributes.totalSeconds/attributes.distance
