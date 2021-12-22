@@ -76,6 +76,8 @@ const SetDistanceIntentHandler = {
         let speakOutput = `Set distance Intent called ${distance} ${unit}resolves to ${resolvedUnit}`;
         let repromptText = speakOutput;
 
+        decimal = parseFloat(distance)
+
         if(distance){
             if(decimal){
                 decimal = parseInt(decimal) 
