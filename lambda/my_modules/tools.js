@@ -1,5 +1,5 @@
 var tools = {
-    convertToSeconds(hours, minutes, seconds){
+    convertToSeconds(attributes, hours, minutes, seconds){
         let total = 0
         
         if(seconds){
@@ -14,9 +14,10 @@ var tools = {
             total += parseInt(hours)*60*60
         }
         
+        attributes.totalSeconds = total;
         return total;
     },
-    
+
     calculateSplits(attributes){
         let splitSeconds = attributes.totalSeconds/attributes.distance
         

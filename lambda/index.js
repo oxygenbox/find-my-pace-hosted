@@ -79,7 +79,7 @@ const SetTimeIntentHandler = {
         let m = (minutes) ? minutes : 0;
         let s = (seconds) ? seconds : 0;
         
-        let totalSeconds = tools.convertToSeconds(h, m, s)
+        let totalSeconds = tools.convertToSeconds(sessionAttributes, h, m, s)
 
 
         let speakOutput = `Set time Intent called. You said ${h} hours ${m} minutes ${s} seconds`;
