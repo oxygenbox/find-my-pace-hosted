@@ -67,11 +67,17 @@ const SetDistanceIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'SetDistanceIntent';
     },
     handle(handlerInput) {
+
+        let speakOutput = 'Set distance Intent called. ';
+        let repromptText = speakOutput;
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         let distance = handlerInput.requestEnvelope.request.intent.slots.distance.value;
         let decimal = handlerInput.requestEnvelope.request.intent.slots.decimal.value;
         let unit = handlerInput.requestEnvelope.request.intent.slots.unit.value;
         let resolvedUnit = tools.resolvedValue(handlerInput.requestEnvelope, `unit`)
+        /*
+        
+        
 
         let speakOutput = `Set distance Intent called ${distance} ${unit}resolves to ${resolvedUnit}`;
         let repromptText = speakOutput;
@@ -95,7 +101,7 @@ const SetDistanceIntentHandler = {
             reprompt = speakOutput;
         }
 
-
+        */
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(repromptText)
