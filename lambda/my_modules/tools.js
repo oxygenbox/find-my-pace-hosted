@@ -14,7 +14,8 @@ var tools = {
             tot += hours*60*60
         }
         
-        return tot
+        //return tot
+        return 1000
     },
     calculateSplits(attributes){
         let splitSeconds = attributes.totalSeconds/attributes.distance
