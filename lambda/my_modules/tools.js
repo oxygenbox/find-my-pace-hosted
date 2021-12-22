@@ -3,7 +3,7 @@ var tools = {
         let tot = 0
         
         if(seconds){
-            tot += seconds
+            tot += parseInt(seconds)
         }
         
         if(minutes){
