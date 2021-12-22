@@ -74,7 +74,7 @@ const SetDistanceIntentHandler = {
         let distance = handlerInput.requestEnvelope.request.intent.slots.distance.value;
         let decimal = handlerInput.requestEnvelope.request.intent.slots.decimal.value;
         let unit = handlerInput.requestEnvelope.request.intent.slots.unit.value;
-        let resolvedUnit = tools.resolvedValue(handlerInput.requestEnvelope, `unit`)
+        //let resolvedUnit = tools.resolvedValue(handlerInput.requestEnvelope, `unit`)
 
         distance = parseFloat(distance);
         sessionAttributes.distance = distance;
@@ -84,23 +84,17 @@ const SetDistanceIntentHandler = {
             sessionAttributes.decimal = decimal;
             sessionAttributes.distance = distance + decimal;
         }
+
+        if(unit){
+            sessionAttributes.unit = unit;
+            sessionAttributes.resolvedUnit = tools.resolvedValue(handlerInput.requestEnvelope, `unit`)
+        }
         /*
         
         
 
         let speakOutput = `Set distance Intent called ${distance} ${unit}resolves to ${resolvedUnit}`;
         let repromptText = speakOutput;
-
-        decimal = parseFloat(distance)
-
-        if(distance){
-            if(decimal){
-                decimal = parseInt(decimal) 
-                distance += decimal
-            }
-
-            sessionAttributes.distance = distance
-        }
 
         if(unit){
             sessionAttributes.unit = unit;
