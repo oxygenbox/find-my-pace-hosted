@@ -78,12 +78,11 @@ const SetDistanceIntentHandler = {
 
         if(distance){
             if(decimal){
-                let fullDistance = distance + decimal
-                //decimal = parseInt(decimal) * 0.1
-                //distance += decimal
+                decimal = parseInt(decimal) 
+                distance += decimal
             }
 
-            sessionAttributes.distance = fullDistance
+            sessionAttributes.distance = distance
         }
 
         if(unit){
