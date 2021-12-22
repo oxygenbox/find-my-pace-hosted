@@ -78,9 +78,11 @@ const SetTimeIntentHandler = {
         let h = (hours) ? hours : 0;
         let m = (minutes) ? minutes : 0;
         let s = (seconds) ? seconds : 0;
+        
+    
 
 
-        let speakOutput = `Set time Intent called. `;
+        let speakOutput = `Set time Intent called. This is ${h} hours ${m} minutes ${s} seconds`;
         let repromptText = speakOutput;
 
         return handlerInput.responseBuilder
