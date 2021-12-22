@@ -80,7 +80,7 @@ const SetDistanceIntentHandler = {
         sessionAttributes.distance = distance;
 
         if(decimal){
-            decimal = parseFloat(decimal);
+            decimal = parseFloat(decimal * 0.1);
             sessionAttributes.decimal = decimal;
         }
         /*
