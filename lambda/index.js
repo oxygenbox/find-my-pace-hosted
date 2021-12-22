@@ -74,7 +74,7 @@ const SetDistanceIntentHandler = {
         let distance = handlerInput.requestEnvelope.request.intent.slots.distance.value;
         let decimal = handlerInput.requestEnvelope.request.intent.slots.decimal.value;
         let unit = handlerInput.requestEnvelope.request.intent.slots.unit.value;
-        //let resolvedUnit = tools.resolvedValue(handlerInput.requestEnvelope, `unit`)
+        let resolvedUnit = tools.resolvedValue(handlerInput.requestEnvelope, `unit`)
 
         distance = parseFloat(distance);
         sessionAttributes.distance = distance;
@@ -87,7 +87,7 @@ const SetDistanceIntentHandler = {
 
         if(unit){
             sessionAttributes.unit = unit;
-            sessionAttributes.resolvedUnit = tools.resolvedValue(handlerInput.requestEnvelope, `unit`)
+           // sessionAttributes.resolvedUnit = tools.resolvedValue(handlerInput.requestEnvelope, `unit`)
             speakOutput = `In minutes, hours, and seconds; what time are you looking to complete ${distance} ${resolvedUnit}? `;
         } else {
             //no unit given
