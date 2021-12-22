@@ -75,9 +75,9 @@ const SetTimeIntentHandler = {
         let hours = handlerInput.requestEnvelope.request.intent.slots.hours.value;
         let minutes = handlerInput.requestEnvelope.request.intent.slots.minutes.value;
         let seconds = handlerInput.requestEnvelope.request.intent.slots.seconds.value; 
-       // let h = (hours) ? hours : 0;
-      //  let m = (minutes) ? minutes : 0;
-      //  let s = (seconds) ? seconds : 0;
+        let h = (hours) ? hours : 0;
+        let m = (minutes) ? minutes : 0;
+        let s = (seconds) ? seconds : 0;
 
 
         let speakOutput = `Set time Intent called. `;
