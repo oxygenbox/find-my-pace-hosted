@@ -15,51 +15,7 @@ const LaunchRequestHandler = {
     }
 };
 
-/*
-const SetTimeIntentHandler = {
-  
-    handle(handlerInput) {
-    
-        const hours = handlerInput.requestEnvelope.request.intent.slots.hour.value
-        const minutes = handlerInput.requestEnvelope.request.intent.slots.minute.value
-        const seconds = handlerInput.requestEnvelope.request.intent.slots.second.value
-        
-        let h = (hours) ? hours : 0
-        let m = (minutes) ? minutes : 0
-        let s = (seconds) ? seconds : 0
-      
-        let totalSeconds = tools.convertToSeconds(h, m, s)
-        
-        sessionAttributes.totalSeconds = tools.convertToSeconds(h, m, s)
-        
-      
-        
-        let speakOutput = `Time Intent called. `;
-        
-        
-        
-        if(sessionAttributes.distance && sessionAttributes.unit && sessionAttributes.totalSeconds){
-            const split = tools.calculateSplits(sessionAttributes)
-            const formattedTime = tools.formatSecondsToTime(split)
-            speakOutput = ` the split for running ${sessionAttributes.distance} ${sessionAttributes.unit} in ${sessionAttributes.totalSeconds} is ${split} ${formattedTime}`
-            
-            speakOutput = `running ${sessionAttributes.distance} ${sessionAttributes.unit} requires a pace of ${formattedTime} per ${sessionAttributes.unit}`
-      
-            
-        }
-        
-       // 
-        
-        //speakOutput = `${h}: ${m}: ${s}`
-
-        return handlerInput.responseBuilder
-            .speak(speakOutput)
-            .reprompt('add a reprompt if you want to keep the session open for the user to respond')
-            .getResponse();
-    }
-};
-*/
-
+//--------------------------------------------------------------------------------
 const SetTimeIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -122,7 +78,7 @@ const SetDistanceIntentHandler = {
 
         if(distance){
             if(decimal){
-                decimal = parseInt(decimal) * 0.1
+                decimal = parseInt(decimal) * 0.01
                 distance += decimal
             }
 
