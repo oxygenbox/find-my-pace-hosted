@@ -88,6 +88,9 @@ const SetDistanceIntentHandler = {
         if(unit){
             sessionAttributes.unit = unit;
             sessionAttributes.resolvedUnit = tools.resolvedValue(handlerInput.requestEnvelope, `unit`)
+            speakOutput = `In minutes, hours, and seconds; what time are you looking to complete ${distance} ${resolvedUnit}? `;
+        } else {
+            //no unit given
         }
         /*
         
@@ -100,7 +103,7 @@ const SetDistanceIntentHandler = {
             sessionAttributes.unit = unit;
             sessionAttributes.resolvedUnit = resolvedUnit;
 
-            speakOutput = `In minutes, hours, and seconds; what time are you looking to complete ${distance} ${resolvedUnit}? `;
+           
             reprompt = speakOutput;
         }
 
