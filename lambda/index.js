@@ -80,9 +80,24 @@ const SetTimeIntentHandler = {
         let s = (seconds) ? seconds : 0;
         
         let totalSeconds = tools.convertToSeconds(sessionAttributes, h, m, s)
-
-
         let speakOutput = `Set time Intent called. You said ${h} hours ${m} minutes ${s} seconds`;
+        speakOutput = `You said ${h} hours ${m} minutes ${s} seconds`;
+
+        if(sessionAttributes.distance && sessionAttributes.unit && sessionAttributes.totalSeconds){
+            const split = tools.calculateSplits(sessionAttributes)
+
+            speakOutput = ` the split for running ${sessionAttributes.distance} ${sessionAttributes.unit} in ${sessionAttributes.totalSeconds} is ${split}`
+
+            //const formattedTime = tools.formatSecondsToTime(split)
+           // speakOutput = ` the split for running ${sessionAttributes.distance} ${sessionAttributes.unit} in ${sessionAttributes.totalSeconds} is ${split} ${formattedTime}`
+            
+           // speakOutput = `running ${sessionAttributes.distance} ${sessionAttributes.unit} requires a pace of ${formattedTime} per ${sessionAttributes.unit}`
+      
+            
+        }
+
+
+       
         speakOutput += `That is a total of ${totalSeconds} seconds`;
         let repromptText = speakOutput;
 
