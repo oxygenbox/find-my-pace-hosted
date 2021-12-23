@@ -41,15 +41,8 @@ const SetTimeIntentHandler = {
 
             const formattedTime = tools.formatSecondsToTime(split)
             speakOutput = ` ${split} seconds formatted is ${formattedTime}`
-            
-           // speakOutput = `running ${sessionAttributes.distance} ${sessionAttributes.unit} requires a pace of ${formattedTime} per ${sessionAttributes.unit}`
-      
-            
         }
 
-
-       
-       // speakOutput += `That is a total of ${totalSeconds} seconds`;
         let repromptText = speakOutput;
 
         return handlerInput.responseBuilder
