@@ -5,23 +5,23 @@ var data =  {
        
      pools: {
           launchPrompt : [
-               `I can help you find the pace needed to reach your race goal. `,
-               `Allow me to find the pace required to achieve your race race goal. `,
-               `If you are trying to figure out the pace necessay to hit your race goal, you are in the right place. `,
-               `Need to know what pace is required to hit you race goal, then let me help you. `,
-               `I can provide the pace required to reach your desired finish time. ` 
+            `I can help you find the pace needed to reach your race goal. `,
+            `Allow me to find the pace required to achieve your race goal. `,
+            `If you are trying to figure out the pace necessary to hit your race goal, you are in the right place. `,
+            `I need to know what pace is required to hit you race goal, then let me help you. `,
+            `I can provide the pace required to reach your desired finish time.  `
            ],
            launchSuffix :[
-               `I just need the length of your race, and your desired finish time. `,
-               `I need your race distance, and the time you wish to finish it in.`,
-               `I need to know the length of your race, and the time you want to finish it in. `,
-               `Provide me with the distance you plan to  run and the time you are hoping to finish in. `,
-               `Just tell me the diatance and and designred finsih time`
+               `I just need you to tell me the length of your race, and your desired finish time. `,
+               `Tell me your race distance, and the time you wish to finish it in. `,
+               `I need to know the length of your race, along with the time you are hoping to complete it. `,
+               `Provide me with the distance you plan to run, and the time you are hoping to finish in. `,
+               `Just let me know the distance, along  with the desired finish time. `
            ],
            goodbyes : [
-                "OK, stay boston strong",
-                "Alright, keep chasing the unicorn",
-                "Wicked awesome"
+                "OK, don't forget to plan your race, and race your plan. ",
+                "Alright, remember to never fear the distance, but always respect it. ",
+                "Ok, remember the bigger the smile, the faster the mile. ",
            ],
                mininumAge : [
                "I'm sorry, you need to be 18 years old to qualify for Boston. ",
