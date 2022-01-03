@@ -125,7 +125,7 @@ const CancelAndStopIntentHandler = {
     },
     handle(handlerInput) {
         
-        const speakOutput = tools.getRandomPhrase(data.pools.goodbyes;
+        const speakOutput = tools.getRandomPhrase(data.pools.goodbyes);
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
