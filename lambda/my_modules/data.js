@@ -17,7 +17,7 @@ var data =  {
             `To begin tell me the length of the rrace or run. `,
             `To get started, I need to know the length of your race or dostance you are asking about. `,
             `To start off, provide me with the distance you plan to run. `,
-            `To kick things off, me know the distance you  are looking to run. `
+            `To kick things off, tell me know the distance you  are looking to run. `
            ],
 
 
