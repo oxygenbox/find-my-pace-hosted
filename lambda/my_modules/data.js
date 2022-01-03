@@ -8,10 +8,20 @@ var data =  {
             `I can help you find the pace needed to reach your race goal. `,
             `Allow me to find the pace required to achieve your race goal. `,
             `If you are trying to figure out the pace necessary to hit your race goal, you are in the right place. `,
-            `I need to know what pace is required to hit you race goal, then let me help you. `,
+            `If want to know what pace is required to hit your race goal, then let me help you. `,
             `I can provide the pace required to reach your desired finish time.  `
            ],
-           launchSuffix :[
+
+           launchSuffix : [
+            `I just need a few bits of info. To start, tell me the length of your race, or how far to plan to run. `,
+            `To begin tell me the length of the rrace or run. `,
+            `To get started, I need to know the length of your race or dostance you are asking about. `,
+            `To start off, provide me with the distance you plan to run. `,
+            `To kick things off, me know the distance you  are looking to run. `
+           ]
+
+
+           OLDlaunchSuffix :[
                `I just need you to tell me the length of your race, and your desired finish time. `,
                `Tell me your race distance, and the time you wish to finish it in. `,
                `I need to know the length of your race, along with the time you are hoping to complete it. `,
@@ -19,9 +29,9 @@ var data =  {
                `Just let me know the distance, along  with the desired finish time. `
            ],
            goodbyes : [
-                "OK, don't forget to plan your race, and race your plan. ",
-                "Alright, remember to never fear the distance, but always respect it. ",
-                "Ok, remember the bigger the smile, the faster the mile. ",
+                "OK. Don't forget to plan your race, and race your plan. ",
+                "Alright, and remember to never fear the distance, but always respect it. ",
+                "Ok! remember the bigger the smile, the faster the mile. ",
            ],
                mininumAge : [
                "I'm sorry, you need to be 18 years old to qualify for Boston. ",

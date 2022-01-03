@@ -7,10 +7,11 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
+        let speakOutput= `Welcome to find my pace, `;
         let pause = "<break time='0.25s'/>";
         let prefix = tools.getRandomPhrase(data.pools.launchPrompt);
         let suffix = tools.getRandomPhrase(data.pools.launchSuffix)
-        let speakOutput = prefix + pause + suffix;
+         speakOutput += prefix + pause + suffix;
         let repromptText = `Sorry I did not get that, ` + suffix;
 
 
