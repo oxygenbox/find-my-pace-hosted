@@ -1,5 +1,6 @@
 const Alexa = require('ask-sdk-core');
 const tools = require('./my_modules/tools');
+const data = require('./my_modules/data');
 
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
