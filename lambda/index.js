@@ -7,11 +7,19 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Well howdy,  How far do you want to run?';
+        let pause = "<break time='0.25s'/>";
+        let prefix = tools.getRandomPhrase(data.pools.launchPrompt);
+        let suffix = tools.getRandomPhrase(data.pools.launchSuffix)
+        let speakOutput = prefix + pause + suffix;
+        let repromptText = `Sorry I did not get that, ` + suffix;
+
+
+
+
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt(speakOutput)
+            .reprompt(repromptText)
             .getResponse();
     }
 };
