@@ -139,7 +139,7 @@ const SetRaceIntentHandler = {
         speakOutput = `Test So you plan to run a ${race}`
 
         speakOutput = tools.getRandomPhrase(data.pools.requestTime)
-        speakOutput += `the ${race}`
+        speakOutput += ` the ${race}`
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
