@@ -14,10 +14,10 @@ var data =  {
 
            launchSuffix : [
             `I just need a few bits of info. To start, tell me the length of your race, or how far to plan to run. `,
-            `To begin tell me the length of the rrace or run. `,
-            `To get started, I need to know the length of your race or distance you are asking about. `,
+            `To begin, tell me the length of the race or run. `,
+            `To get started, I need to know the length of your race or the distance you are asking about. `,
             `To start off, provide me with the distance you plan to run. `,
-            `To kick things off, tell me know the distance you  are looking to run. `
+            `To kick things off, tell me the distance you are looking to run. `
            ],
 
 

@@ -29,6 +29,9 @@ const SetTimeIntentHandler = {
     },
     handle(handlerInput) {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        let speakOutput = `Set time Intent called.`;
+
+        //get slot values
         let hours = handlerInput.requestEnvelope.request.intent.slots.hours.value;
         let minutes = handlerInput.requestEnvelope.request.intent.slots.minutes.value;
         let seconds = handlerInput.requestEnvelope.request.intent.slots.seconds.value; 
@@ -36,9 +39,20 @@ const SetTimeIntentHandler = {
         let m = (minutes) ? minutes : 0;
         let s = (seconds) ? seconds : 0;
         
+        //turn the slot values into seconds
         let totalSeconds = tools.convertToSeconds(sessionAttributes, h, m, s)
-        let speakOutput = `Set time Intent called.`;
+        
         speakOutput = `You said ${h} hours ${m} minutes ${s} seconds`;
+        //if all the proper info exists, calculate the splits
+        if(sessionAttributes.distance && sessionAttributes.unit && totalSeconds){
+            const split = tools.calculateSplits(sessionAttributes, totalSeconds)
+            const formattedTime = tools.formatSecondsToTime(split)
+            speakOutput = ` the split for running ${sessionAttributes.distance} ${sessionAttributes.unit} in converted ${totalSeconds} seconds is ${split} ${formattedTime}`
+            
+            speakOutput = `running ${sessionAttributes.distance} ${sessionAttributes.unit} requires a pace of ${formattedTime} per ${sessionAttributes.unit}`
+       
+            
+        }
         /*
         if(sessionAttributes.distance && sessionAttributes.unit && sessionAttributes.totalSeconds){
             const split = tools.calculateSplits(sessionAttributes)
@@ -125,7 +139,7 @@ const SetRaceIntentHandler = {
         speakOutput = `Test So you plan to run a ${race}`
 
         speakOutput = tools.getRandomPhrase(data.pools.requestTime)
-        speakOutput += race
+        speakOutput += `the ${race}`
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
