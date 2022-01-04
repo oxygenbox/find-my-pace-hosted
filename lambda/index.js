@@ -14,10 +14,6 @@ const LaunchRequestHandler = {
          speakOutput += prefix + pause + suffix;
         let repromptText = `Sorry I did not get that, ` + suffix;
 
-
-
-
-
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(repromptText)
@@ -43,7 +39,7 @@ const SetTimeIntentHandler = {
         let totalSeconds = tools.convertToSeconds(sessionAttributes, h, m, s)
         let speakOutput = `Set time Intent called. You said ${h} hours ${m} minutes ${s} seconds`;
         speakOutput = `You said ${h} hours ${m} minutes ${s} seconds`;
-
+        /*
         if(sessionAttributes.distance && sessionAttributes.unit && sessionAttributes.totalSeconds){
             const split = tools.calculateSplits(sessionAttributes)
 
@@ -52,7 +48,7 @@ const SetTimeIntentHandler = {
             const formattedTime = tools.formatSecondsToTime(split)
             speakOutput = ` ${split} seconds formatted is ${formattedTime}`
         }
-
+        */
         let repromptText = speakOutput;
 
         return handlerInput.responseBuilder
@@ -119,9 +115,9 @@ const SetRaceIntentHandler = {
         let repromptText = speakOutput;
         //collect slot values
         let race = handlerInput.requestEnvelope.request.intent.slots.race.value;
-        let raceResolved = tools.resolvedValue(handlerInput.requestEnvelope, 'race')
-
-        speakOutput = `So yu plan to run a ${race} or ${raceResolved}`
+        race = tools.resolvedValue(handlerInput.requestEnvelope, 'race')
+        //TODO convert to unit and distance
+        speakOutput = `So yu plan to run a ${race}`
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
