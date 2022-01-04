@@ -89,7 +89,9 @@ const SetDistanceIntentHandler = {
             sessionAttributes.unit = unit;
             let resolvedUnit = tools.resolvedValue(handlerInput.requestEnvelope, `unit`)
             sessionAttributes.resolvedUnit = resolvedUnit;
-            speakOutput = `In minutes, hours, and seconds; what time are you looking to complete ${sessionAttributes.distance} ${resolvedUnit}? `;
+            //speakOutput = `In minutes, hours, and seconds; what time are you looking to complete ${sessionAttributes.distance} ${resolvedUnit}? `;
+            speakOutput = tools.getRandomPhrase(data.pools.requestTime)
+            speakOutput += ` ${sessionAttributes.distance} ${resolvedUnit}`;
         } else {
             //no unit given
             speakOutput = `${sessionAttributes.distance}, is that miles or kilometers? `;
@@ -120,7 +122,10 @@ const SetRaceIntentHandler = {
         tools.raceToDistance(sessionAttributes, race)
 
         //TODO convert to unit and distance
-        speakOutput = `So you plan to run a ${race}`
+        speakOutput = `Test So you plan to run a ${race}`
+
+        speakOutput = tools.getRandomPhrase(data.pools.requestTime)
+        speakOutput += race
 
         return handlerInput.responseBuilder
             .speak(speakOutput)

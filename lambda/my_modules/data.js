@@ -33,6 +33,14 @@ var data =  {
                 "Alright, and remember to never fear the distance, but always respect it. ",
                 "Ok! remember the bigger the smile, the faster the mile. ",
            ],
+
+           requestTime : [
+                `What time do you want to finish your `,
+                `What time do you want to finish the`,
+                `In minutes, hours, and seconds; what time are you looking to complete `,
+                `In minutes, hours, and seconds; what is your goal time for completing `,
+                `Tell me your target time for completing `
+              ],
                mininumAge : [
                "I'm sorry, you need to be 18 years old to qualify for Boston. ",
                "Oops, you need to be at least 18 years old to enter the Boston Marathon. ",
