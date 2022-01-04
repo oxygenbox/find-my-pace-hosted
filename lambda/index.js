@@ -65,23 +65,24 @@ const SetTimeIntentHandler = {
 
 
 const SetDistanceIntentHandler = {
+    //TODO -What is there is already a time value 
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'SetDistanceIntent';
     },
     handle(handlerInput) {
 
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         let speakOutput = 'Set distance Intent called. ';
         let repromptText = speakOutput;
-        /*
-        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        //collect slot values
         let distance = handlerInput.requestEnvelope.request.intent.slots.distance.value;
         let decimal = handlerInput.requestEnvelope.request.intent.slots.decimal.value;
         let unit = handlerInput.requestEnvelope.request.intent.slots.unit.value;
 
+        //turn slot calues into bumerica values
         distance = parseFloat(distance);
         sessionAttributes.distance = distance;
-
         if(decimal){
             decimal = parseFloat(decimal * 0.1);
             sessionAttributes.decimal = decimal;
@@ -95,8 +96,9 @@ const SetDistanceIntentHandler = {
             speakOutput = `In minutes, hours, and seconds; what time are you looking to complete ${sessionAttributes.distance} ${resolvedUnit}? `;
         } else {
             //no unit given
+            speakOutput = `${sessionAttributes.distance}, is that miles or kilometers? `;
         }
-       */
+
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(repromptText)
@@ -104,7 +106,7 @@ const SetDistanceIntentHandler = {
         }
 };
 
-//
+//--------------------------------------------------------------------------------
 
 const SetRaceIntentHandler = {
     canHandle(handlerInput) {
@@ -112,7 +114,14 @@ const SetRaceIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'SetRaceIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'Set Race Intent called';
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        let speakOutput = 'Set Race Intent called ';
+        let repromptText = speakOutput;
+        //collect slot values
+        let race = handlerInput.requestEnvelope.request.intent.slots.race.value;
+        let raceResolved = tools.resolvedValue(handlerInput.requestEnvelope, 'race')
+
+        speakOutput = `So yu plan to run a ${race} or ${raceResolved}`
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
