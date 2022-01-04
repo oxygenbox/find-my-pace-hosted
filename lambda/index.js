@@ -73,6 +73,7 @@ const SetDistanceIntentHandler = {
 
         let speakOutput = 'Set distance Intent called. ';
         let repromptText = speakOutput;
+        /*
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         let distance = handlerInput.requestEnvelope.request.intent.slots.distance.value;
         let decimal = handlerInput.requestEnvelope.request.intent.slots.decimal.value;
@@ -95,13 +96,34 @@ const SetDistanceIntentHandler = {
         } else {
             //no unit given
         }
-       
+       */
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(repromptText)
             .getResponse();
         }
 };
+
+//
+
+const SetRaceIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'SetRaceIntent';
+    },
+    handle(handlerInput) {
+        const speakOutput = 'Set Race Intent called';
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt(speakOutput)
+            .getResponse();
+    }
+};
+
+
+//--------------------------------------------------------------------------------
+
 
 const HelpIntentHandler = {
     canHandle(handlerInput) {
@@ -215,6 +237,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
         SetTimeIntentHandler,
+        SetRaceIntentHandler,
         SetDistanceIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
