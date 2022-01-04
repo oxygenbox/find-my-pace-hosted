@@ -8,7 +8,7 @@ var data =  {
             `I can help you find the pace needed to reach your race goal. `,
             `Allow me to find the pace required to achieve your race goal. `,
             `If you are trying to figure out the pace necessary to hit your race goal, you are in the right place. `,
-            `If want to know what pace is required to hit your race goal, then let me help you. `,
+            `If you want to know what pace is required to hit your race goal, then let me help you. `,
             `I can provide the pace required to reach your desired finish time.  `
            ],
 
