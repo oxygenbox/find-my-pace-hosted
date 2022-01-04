@@ -47,11 +47,12 @@ const SetTimeIntentHandler = {
         if(sessionAttributes.distance && sessionAttributes.unit && totalSeconds){
             const split = tools.calculateSplits(sessionAttributes, totalSeconds)
             const formattedTime = tools.formatSecondsToTime(split)
+            const speakableTime = tools.formatSecondsToTime(totalSeconds)
             speakOutput = ` the split for running ${sessionAttributes.distance} ${sessionAttributes.unit} in converted ${totalSeconds} seconds is ${split} ${formattedTime}`
             
             speakOutput = `running ${sessionAttributes.distance} ${sessionAttributes.unit} requires a pace of ${formattedTime} per ${sessionAttributes.unit}`
-       
             
+            speakOutput += `<break time="0.5s"/> Speakable time is ${speakableTime}`;
         }
         /*
         if(sessionAttributes.distance && sessionAttributes.unit && sessionAttributes.totalSeconds){
@@ -103,7 +104,6 @@ const SetDistanceIntentHandler = {
             sessionAttributes.unit = unit;
             let resolvedUnit = tools.resolvedValue(handlerInput.requestEnvelope, `unit`)
             sessionAttributes.resolvedUnit = resolvedUnit;
-            //speakOutput = `In minutes, hours, and seconds; what time are you looking to complete ${sessionAttributes.distance} ${resolvedUnit}? `;
             speakOutput = tools.getRandomPhrase(data.pools.requestTime)
             speakOutput += ` ${sessionAttributes.distance} ${resolvedUnit}`;
         } else {
