@@ -58,10 +58,47 @@ var tools = {
         }
         
         return time
-        
-        
-        
-        
+    },
+
+    raceToDistance(attributes, race){
+        let distance
+        let unit = 'miles'
+        switch(race){
+            case "5k": 
+                distance = 3.1
+                break;
+            case "8k": 
+               distance = 4.97
+                break;
+            case "10k": 
+                distance = 6.2
+                break;
+            case "15k": 
+                distance = 9.3
+                break;
+            case "ten miler": 
+                distance = 10;
+                break;
+            case "half marathon":
+                distance = 13.1;
+                break;
+            case "marathon":
+                distance = 26.2;
+                break;
+            case "50k":
+                distance = 31;
+                break;
+            case "100k":
+                distance = 62;
+                break;
+            case "hundred":
+                distance = 100;
+                break;
+        }
+        attributes.distance = distance;
+        attributes.unit = unit;
+        attributes.race = race;
+
     },
     
     formatUnit(unit, num){

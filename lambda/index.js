@@ -37,7 +37,7 @@ const SetTimeIntentHandler = {
         let s = (seconds) ? seconds : 0;
         
         let totalSeconds = tools.convertToSeconds(sessionAttributes, h, m, s)
-        let speakOutput = `Set time Intent called. You said ${h} hours ${m} minutes ${s} seconds`;
+        let speakOutput = `Set time Intent called.`;
         speakOutput = `You said ${h} hours ${m} minutes ${s} seconds`;
         /*
         if(sessionAttributes.distance && sessionAttributes.unit && sessionAttributes.totalSeconds){
@@ -116,8 +116,11 @@ const SetRaceIntentHandler = {
         //collect slot values
         let race = handlerInput.requestEnvelope.request.intent.slots.race.value;
         race = tools.resolvedValue(handlerInput.requestEnvelope, 'race')
+
+        tools.raceToDistance(sessionAttributes, race)
+
         //TODO convert to unit and distance
-        speakOutput = `So yu plan to run a ${race}`
+        speakOutput = `So you plan to run a ${race}`
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
